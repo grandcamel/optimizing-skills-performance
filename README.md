@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="progressive-disclosure-hero.png" alt="The Power of Progressive Disclosure: A Timeless UX Principle" width="100%">
+  <img src="assets/progressive-disclosure-hero.png" alt="The Power of Progressive Disclosure: A Timeless UX Principle" width="100%">
 </p>
 
 <p align="center">
@@ -81,7 +81,7 @@ claude /plugin
 # Clone and symlink for development
 git clone https://github.com/grandcamel/optimizing-skills-performance.git
 cd optimizing-skills-performance
-claude --plugin-dir .
+claude --plugin-dir ./plugin
 ```
 
 ### Standalone Scripts
@@ -89,9 +89,9 @@ claude --plugin-dir .
 The analysis scripts work without installing the plugin:
 
 ```bash
-./scripts/analyze-skill.sh /path/to/skill
-./scripts/audit-all-skills.sh ~/.claude/skills
-./scripts/validate-skill.sh /path/to/skill
+./plugin/scripts/analyze-skill.sh /path/to/skill
+./plugin/scripts/audit-all-skills.sh ~/.claude/skills
+./plugin/scripts/validate-skill.sh /path/to/skill
 ```
 
 ---
@@ -101,7 +101,7 @@ The analysis scripts work without installing the plugin:
 ### Analyze a Single Skill
 
 ```bash
-./scripts/analyze-skill.sh ~/.claude/skills/my-skill
+./plugin/scripts/analyze-skill.sh ~/.claude/skills/my-skill
 ```
 
 **Output includes:**
@@ -114,7 +114,7 @@ The analysis scripts work without installing the plugin:
 ### Audit All Skills
 
 ```bash
-./scripts/audit-all-skills.sh ~/.claude/skills
+./plugin/scripts/audit-all-skills.sh ~/.claude/skills
 ```
 
 Generates `audit-report.json` with per-skill metrics and comparative scores.
@@ -122,7 +122,7 @@ Generates `audit-report.json` with per-skill metrics and comparative scores.
 ### Validate Before Publishing
 
 ```bash
-./scripts/validate-skill.sh ~/.claude/skills/my-skill true
+./plugin/scripts/validate-skill.sh ~/.claude/skills/my-skill true
 ```
 
 Returns pass/fail with detailed violation list—run this before committing.
@@ -191,22 +191,25 @@ This tool helps you write skills that work everywhere.
 
 ```
 optimizing-skills-performance/
-├── .claude-plugin/
-│   └── plugin.json          # Plugin manifest
-├── skills/
-│   └── skills-optimizer/
-│       └── SKILL.md         # Main skill (Claude loads this)
-├── docs/
-│   ├── disclosure-levels.md # Full 3-level specification
-│   ├── token-counting.md    # Measurement techniques
-│   ├── naming-conventions.md # Gerund naming patterns
-│   └── validation-rules.md  # Complete rule set
-├── scripts/
-│   ├── analyze-skill.sh     # Single skill analysis
-│   ├── audit-all-skills.sh  # Batch audit
-│   └── validate-skill.sh    # Pass/fail validation
-├── README.md                # You are here
-└── CLAUDE.md                # Instructions for Claude
+├── plugin/                      # Plugin directory (installed by Claude)
+│   ├── .claude-plugin/
+│   │   └── plugin.json          # Plugin manifest
+│   ├── skills/
+│   │   └── skills-optimizer/
+│   │       └── SKILL.md         # Main skill (Claude loads this)
+│   ├── docs/
+│   │   ├── disclosure-levels.md # Full 3-level specification
+│   │   ├── token-counting.md    # Measurement techniques
+│   │   ├── naming-conventions.md # Gerund naming patterns
+│   │   └── validation-rules.md  # Complete rule set
+│   └── scripts/
+│       ├── analyze-skill.sh     # Single skill analysis
+│       ├── audit-all-skills.sh  # Batch audit
+│       └── validate-skill.sh    # Pass/fail validation
+├── assets/                      # README assets (not installed)
+│   └── progressive-disclosure-hero.png
+├── README.md                    # You are here
+└── CLAUDE.md                    # Instructions for Claude
 ```
 
 ---
@@ -215,7 +218,7 @@ optimizing-skills-performance/
 
 1. Fork this repository
 2. Create a feature branch
-3. Run validation: `./scripts/validate-skill.sh . true`
+3. Run validation: `./plugin/scripts/validate-skill.sh ./plugin true`
 4. Submit a pull request
 
 ---
@@ -228,10 +231,10 @@ MIT License — See [LICENSE](LICENSE) file for details.
 
 ## Further Reading
 
-- [Disclosure Level Criteria](docs/disclosure-levels.md) — Full specification for each level
-- [Token Counting Guide](docs/token-counting.md) — Accurate measurement techniques
-- [Validation Rules](docs/validation-rules.md) — Complete rule set with examples
-- [Naming Conventions](docs/naming-conventions.md) — Gerund forms and patterns
+- [Disclosure Level Criteria](plugin/docs/disclosure-levels.md) — Full specification for each level
+- [Token Counting Guide](plugin/docs/token-counting.md) — Accurate measurement techniques
+- [Validation Rules](plugin/docs/validation-rules.md) — Complete rule set with examples
+- [Naming Conventions](plugin/docs/naming-conventions.md) — Gerund forms and patterns
 
 ---
 
