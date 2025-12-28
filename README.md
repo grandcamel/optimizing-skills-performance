@@ -4,6 +4,7 @@
 
 <p align="center">
   <a href="#installation"><img src="https://img.shields.io/badge/platform-Claude%20Code-blueviolet" alt="Platform"></a>
+  <a href="#installation"><img src="https://img.shields.io/badge/type-Plugin-blue" alt="Plugin"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="License"></a>
   <a href="#the-3-level-disclosure-model"><img src="https://img.shields.io/badge/model-3--Level%20Disclosure-gold" alt="Model"></a>
 </p>
@@ -59,19 +60,33 @@ Think of an optimized skill like a **restaurant menu**:
 
 ## Installation
 
-### As a Claude Code Skill
+### As a Claude Code Plugin (Recommended)
 
 ```bash
-# Copy to your skills directory
-cp -R . ~/.claude/skills/optimizing-skills-performance
+# Install from GitHub
+claude plugin install grandcamel/optimizing-skills-performance
 
-# Or symlink for development
-ln -sf $(pwd) ~/.claude/skills/optimizing-skills-performance
+# Or browse available plugins interactively
+claude /plugin
 ```
 
-### Standalone Usage
+**Installation scopes:**
+- `--scope user` — Available across all your projects (default)
+- `--scope project` — Shared with your team via git
+- `--scope local` — Project-specific, gitignored
 
-The scripts work without installation:
+### Manual Installation
+
+```bash
+# Clone and symlink for development
+git clone https://github.com/grandcamel/optimizing-skills-performance.git
+cd optimizing-skills-performance
+claude --plugin-dir .
+```
+
+### Standalone Scripts
+
+The analysis scripts work without installing the plugin:
 
 ```bash
 ./scripts/analyze-skill.sh /path/to/skill
@@ -176,18 +191,22 @@ This tool helps you write skills that work everywhere.
 
 ```
 optimizing-skills-performance/
-├── SKILL.md                 # Main skill file (Claude loads this)
-├── README.md                # You are here
-├── CLAUDE.md                # Instructions for Claude
+├── .claude-plugin/
+│   └── plugin.json          # Plugin manifest
+├── skills/
+│   └── skills-optimizer/
+│       └── SKILL.md         # Main skill (Claude loads this)
 ├── docs/
 │   ├── disclosure-levels.md # Full 3-level specification
 │   ├── token-counting.md    # Measurement techniques
 │   ├── naming-conventions.md # Gerund naming patterns
 │   └── validation-rules.md  # Complete rule set
-└── scripts/
-    ├── analyze-skill.sh     # Single skill analysis
-    ├── audit-all-skills.sh  # Batch audit
-    └── validate-skill.sh    # Pass/fail validation
+├── scripts/
+│   ├── analyze-skill.sh     # Single skill analysis
+│   ├── audit-all-skills.sh  # Batch audit
+│   └── validate-skill.sh    # Pass/fail validation
+├── README.md                # You are here
+└── CLAUDE.md                # Instructions for Claude
 ```
 
 ---

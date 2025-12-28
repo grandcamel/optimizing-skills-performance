@@ -2,12 +2,13 @@
 
 ## Project Overview
 
-This is the **Skills Performance Optimizer** - a Claude Code skill for auditing and optimizing other skills for token efficiency and progressive disclosure compliance.
+This is the **Skills Performance Optimizer** - a Claude Code **plugin** for auditing and optimizing skills for token efficiency and progressive disclosure compliance.
 
 ## Quick Context
 
 When working on this project:
-- This IS a Claude Code skill (the `SKILL.md` is the entry point)
+- This IS a Claude Code **plugin** (see `.claude-plugin/plugin.json`)
+- The plugin contains a skill at `skills/skills-optimizer/SKILL.md`
 - The skill audits OTHER skills, not itself
 - Scripts are in `scripts/` and should be executable (`chmod +x`)
 - Documentation follows progressive disclosure (brief in SKILL.md, detailed in docs/)
@@ -16,7 +17,8 @@ When working on this project:
 
 | File | Purpose |
 |------|---------|
-| `SKILL.md` | Main skill entry point - Claude loads this when skill is triggered |
+| `.claude-plugin/plugin.json` | Plugin manifest - defines the plugin metadata |
+| `skills/skills-optimizer/SKILL.md` | Main skill entry point - Claude loads this when skill is triggered |
 | `docs/disclosure-levels.md` | Detailed 3-level model specification |
 | `docs/validation-rules.md` | All validation rules with severity levels |
 | `scripts/analyze-skill.sh` | Primary analysis tool |
@@ -25,17 +27,17 @@ When working on this project:
 ## Development Commands
 
 ```bash
-# Test the skill on itself
-./scripts/validate-skill.sh . true
+# Test the plugin locally
+claude --plugin-dir .
 
-# Analyze another skill
+# Analyze a skill
 ./scripts/analyze-skill.sh ~/.claude/skills/some-skill
 
 # Batch audit all skills
 ./scripts/audit-all-skills.sh ~/.claude/skills
 
-# Install as symlink for development
-ln -sf $(pwd) ~/.claude/skills/optimizing-skills-performance
+# Validate a skill
+./scripts/validate-skill.sh /path/to/skill true
 ```
 
 ## Architecture Principles
@@ -104,7 +106,7 @@ All scripts output to stdout in human-readable format. JSON output goes to files
 
 ## Don't Forget
 
-- Keep SKILL.md under 500 lines
+- Keep `skills/skills-optimizer/SKILL.md` under 500 lines
 - Update README.md for user-facing changes
-- Run self-validation before committing
+- Update `.claude-plugin/plugin.json` version for releases
 - Scripts must be executable (`chmod +x`)

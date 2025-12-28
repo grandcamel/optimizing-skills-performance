@@ -1,0 +1,20 @@
+{
+  "name": "skills-optimizer",
+  "version": "1.0.0",
+  "description": "Audit and optimize AI agent skills for token efficiency and progressive disclosure compliance. Provides analysis scripts and validation tools based on the 3-level disclosure model.",
+  "author": {
+    "name": "grandcamel",
+    "url": "https://github.com/grandcamel"
+  },
+  "repository": "https://github.com/grandcamel/optimizing-skills-performance",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "optimization",
+    "tokens",
+    "progressive-disclosure",
+    "performance",
+    "audit"
+  ],
+  "skills": "./skills/"
+}
