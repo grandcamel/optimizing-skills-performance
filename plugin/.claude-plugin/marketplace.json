@@ -1,0 +1,24 @@
+{
+  "name": "skills-optimizer-marketplace",
+  "version": "1.0.0",
+  "description": "Audit and optimize AI agent skills for token efficiency and progressive disclosure compliance.",
+  "owner": {
+    "name": "Jason Krueger",
+    "email": "grandcamel@github.com"
+  },
+  "plugins": [
+    {
+      "name": "skills-optimizer",
+      "description": "Audit and optimize AI agent skills for token efficiency and progressive disclosure compliance. Provides analysis scripts, validation tools, and batch auditing based on the 3-level disclosure model.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Jason Krueger",
+        "url": "https://github.com/grandcamel"
+      },
+      "source": "./",
+      "category": "development",
+      "homepage": "https://github.com/grandcamel/optimizing-skills-performance",
+      "keywords": ["skills", "optimization", "tokens", "progressive-disclosure", "performance", "audit", "validation"]
+    }
+  ]
+}
