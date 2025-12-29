@@ -64,24 +64,18 @@ Think of an optimized skill like a **restaurant menu**:
 
 ```bash
 # Install from GitHub
-claude plugin install grandcamel/optimizing-skills-performance
-
-# Or browse available plugins interactively
-claude /plugin
+/plugin grandcamel/optimizing-skills-performance
 ```
-
-**Installation scopes:**
-- `--scope user` — Available across all your projects (default)
-- `--scope project` — Shared with your team via git
-- `--scope local` — Project-specific, gitignored
 
 ### Manual Installation
 
 ```bash
-# Clone and symlink for development
+# Clone for development
 git clone https://github.com/grandcamel/optimizing-skills-performance.git
 cd optimizing-skills-performance
-claude --plugin-dir ./plugin
+
+# Install locally
+/plugin ./plugin
 ```
 
 ### Standalone Scripts
@@ -193,7 +187,8 @@ This tool helps you write skills that work everywhere.
 optimizing-skills-performance/
 ├── plugin/                      # Plugin directory (installed by Claude)
 │   ├── .claude-plugin/
-│   │   └── plugin.json          # Plugin manifest
+│   │   ├── plugin.json          # Plugin manifest
+│   │   └── marketplace.json     # Marketplace registry entry
 │   ├── skills/
 │   │   └── skills-optimizer/
 │   │       └── SKILL.md         # Main skill (Claude loads this)
